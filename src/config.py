@@ -17,6 +17,8 @@ class Config:
     # Model paths
     MODEL_PATH = Path("models")
     BASELINE_PATH = MODEL_PATH / "baseline.pickle"
+    IMPLICIT_PATH = MODEL_PATH / "als.pickle"
 
+    # Business parameters
     K = 10
     BASE_RECS_COUNT = 30
