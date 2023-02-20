@@ -19,3 +19,4 @@ class Config:
     BASELINE_PATH = MODEL_PATH / "baseline.pickle"
 
     K = 10
+    BASE_RECS_COUNT = 30
