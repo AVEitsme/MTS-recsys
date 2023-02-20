@@ -22,3 +22,4 @@ class Config:
     # Business parameters
     K = 10
     BASE_RECS_COUNT = 30
+    TEST_DAYS = 7
