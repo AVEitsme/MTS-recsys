@@ -17,7 +17,7 @@ class Config:
     # Model paths
     MODEL_PATH = Path("models")
     BASELINE_PATH = MODEL_PATH / "baseline.pickle"
-    IMPLICIT_PATH = MODEL_PATH / "als.pickle"
+    IMPLICIT_NN_PATH = MODEL_PATH / "tf.pickle"
 
     # Business parameters
     K = 10
