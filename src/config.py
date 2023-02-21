@@ -23,3 +23,7 @@ class Config:
     K = 10
     BASE_RECS_COUNT = 30
     TEST_DAYS = 7
+
+    #Optimizer parameters
+    ITERATIONS = 50
+    STOP_ITERATION = 10
