@@ -33,4 +33,4 @@ class PrecisionAtK(MetricAtK):
 
 class RecallAtK(MetricAtK):
     def calculate(self, pred: pd.Series, true: pd.Series) -> float:
-        return len(set(pred) & set(true)) / len(true)
+        return len(set(pred) & set(true)) / len(true) if len(true) != 0 else 0.0
