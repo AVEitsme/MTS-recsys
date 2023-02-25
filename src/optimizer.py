@@ -1,7 +1,7 @@
 import optuna
 
 from abc import ABC, abstractmethod, ABCMeta
-from typing import Callable
+from typing import Callable, Union
 
 
 class EarlyStoppingExceeded(optuna.exceptions.OptunaError):
@@ -11,7 +11,7 @@ class EarlyStoppingExceeded(optuna.exceptions.OptunaError):
 
 class EarlyStopping(ABC):
     """Early stopping callback base class."""
-    def __init__(self, max_iter: int, score: float | int):
+    def __init__(self, max_iter: int, score: Union[float, int]):
         self.max_iter = max_iter
         self.count = 0
         self.score = score
