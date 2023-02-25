@@ -26,5 +26,5 @@ class Config:
     TEST_DAYS = 7
 
     #Optimizer parameters
-    ITERATIONS = 50
-    STOP_ITERATION = 10
+    ITERATIONS = 100
+    STOP_ITERATION = 20
