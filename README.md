@@ -2,5 +2,5 @@
 Problem: https://www.kaggle.com/datasets/sharthz23/mts-library
 ____
 # Branches
-1. develop
-2. release
+1. develop. Contains preprocessing & train notebooks, data, different model;
+2. release. Contains release version.
