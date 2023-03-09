@@ -40,19 +40,20 @@ class RecallAtK(MetricAtK):
         return len(np.intersect1d(pred, true)) / len(true)
     
 
-class FOneScoreAtK(MetricAtK):
+class FScoreAtK(MetricAtK):
     
-    def __init__(self, K: int):
+    def __init__(self, K: int, beta: float = 1):
         super().__init__(K)
         self.precision = PrecisionAtK(K)
         self.recall = RecallAtK(K)
+        self.beta = beta
 
     def calculate(self, pred: pd.Series, true: pd.Series) -> float:
         prec = self.precision.calculate(pred, true)
         rec = self.recall.calculate(pred, true)
         if (prec == 0) and (rec == 0):
             return 0.0
-        return (2 * prec * rec) / (prec + rec)
+        return ((1 + self.beta ** 2) * prec * rec) / (self.beta ** 2 * prec + rec)
 
 
 class AveragePrecisionAtK(MetricAtK):
