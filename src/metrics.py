@@ -35,7 +35,9 @@ class PrecisionAtK(MetricAtK):
 class RecallAtK(MetricAtK):
     
     def calculate(self, pred: pd.Series, true: pd.Series) -> float:
-        return len(np.intersect1d(pred, true)) / len(true) if len(true) != 0 else 0.0
+        if len(true) == 0:
+            return 0.0
+        return len(np.intersect1d(pred, true)) / len(true)
     
 
 class FOneScoreAtK(MetricAtK):
@@ -48,7 +50,9 @@ class FOneScoreAtK(MetricAtK):
     def calculate(self, pred: pd.Series, true: pd.Series) -> float:
         prec = self.precision.calculate(pred, true)
         rec = self.recall.calculate(pred, true)
-        return (2 * prec * rec) / (prec + rec) if prec != 0 or rec != 0 else 0.0
+        if (prec == 0) and (rec == 0):
+            return 0.0
+        return (2 * prec * rec) / (prec + rec)
 
 
 class AveragePrecision(MetricAtK):
