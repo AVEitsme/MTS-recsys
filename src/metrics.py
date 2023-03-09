@@ -55,7 +55,7 @@ class FOneScoreAtK(MetricAtK):
         return (2 * prec * rec) / (prec + rec)
 
 
-class AveragePrecision(MetricAtK):
+class AveragePrecisionAtK(MetricAtK):
 
     def calculate(self, pred: pd.Series, true: pd.Series) -> float:
         def ap(i):
