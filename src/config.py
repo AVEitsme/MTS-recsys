@@ -28,3 +28,4 @@ class Config:
     # Optimizer parameters
     ITERATIONS = 100
     STOP_ITERATION = 20
+    NUM_THREADS = 12
