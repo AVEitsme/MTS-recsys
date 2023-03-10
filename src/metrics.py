@@ -60,7 +60,7 @@ class AveragePrecisionAtK(MetricAtK):
 
     def calculate(self, pred: pd.Series, true: pd.Series) -> float:
         def ap(i):
-            relevant = pred[i - 1] == true[i - 1]
+            relevant = pred[i - 1] in true.values
             if not relevant:
                 return 0.0
             return PrecisionAtK(i).calculate(pred[:i], true[:i])
@@ -77,7 +77,7 @@ class DiscountedCamulativeGainAtK(MetricAtK):
 
     def calculate(self, pred: pd.Series, true: pd.Series) -> float:
         def dcg(i):
-            relevant = pred[i - 1] == true[i - 1]
+            relevant = pred[i - 1] in true.values
             if not relevant:
                 return 0.0
             return 1 / np.log2(i + 1)
