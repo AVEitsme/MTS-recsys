@@ -35,7 +35,7 @@ class Interactions:
     valid: pd.DataFrame = None
 
     
-    def __init__(self, source: pd.DataFrame) -> None:
+    def __init__(self, source: pd.DataFrame, test_days: int, valid_days: int) -> None:
         self.source = source
-        self.train, self.test = DatasetProcessor.split_train_test(source, "start_date", Config.TEST_DAYS)
-        self.train, self.valid = DatasetProcessor.split_train_test(self.train, "start_date", Config.TEST_DAYS * 2)
+        self.train, self.test = DatasetProcessor.split_train_test(source, "start_date", test_days)
+        self.train, self.valid = DatasetProcessor.split_train_test(self.train, "start_date", valid_days)
