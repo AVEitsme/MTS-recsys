@@ -4,12 +4,13 @@ from app.schemas import transaction_responses, db_schema
 from app.db_utils import commit_transaction
 from typing import List
 
+tags = ["Interactions"]
 
-@app.get("/select_all_interactions", tags=["Interactions"], response_model=List[db_schema.Interaction])
+@app.get("/select_all_interactions", tags=tags, response_model=List[db_schema.Interaction])
 def select_all_interactions(limit: int=None):
     return db.query(model.Interaction).limit(limit).all()
 
-@app.post("/insert_interactions", tags=["Interactions"], responses=transaction_responses)
+@app.post("/insert_interactions", tags=tags, responses=transaction_responses)
 def insert_interactions(interactions: List[db_schema.Interaction]):
     for interaction in interactions:
         db_interaction = model.Interaction(
@@ -23,7 +24,7 @@ def insert_interactions(interactions: List[db_schema.Interaction]):
         db.add(db_interaction)
     return commit_transaction()
 
-@app.put("/update_ineractions", tags=["Interactions"], responses=transaction_responses)
+@app.put("/update_ineractions", tags=tags, responses=transaction_responses)
 def update_interactions(interactions: List[db_schema.Interaction]):
     for interaction in interactions:
         db_interaction = db.query(model.Interaction).filter_by(user_id=interaction.user_id, book_id=interaction.book_id).first()
