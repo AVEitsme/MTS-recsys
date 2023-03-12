@@ -2,3 +2,5 @@ fastapi==0.94.0
 pydantic==1.10.5
 SQLAlchemy==2.0.4
 uvicorn==0.21.0
+httpx==0.23.3 # <-- tests
+pytest==7.2.2 # <-- tests
