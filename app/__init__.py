@@ -1,9 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from app.database import engine, Base, SessionLocal
+from app.database import SessionLocal
 
 
-Base.metadata.create_all(bind=engine)
 app = FastAPI()
 db = SessionLocal()
 
