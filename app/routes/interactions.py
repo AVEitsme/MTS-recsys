@@ -24,7 +24,7 @@ def insert_interactions(interactions: List[db_schema.Interaction]):
         db.add(db_interaction)
     return commit_transaction()
 
-@app.put("/update_ineractions", tags=tags, responses=transaction_responses)
+@app.put("/update_interactions", tags=tags, responses=transaction_responses)
 def update_interactions(interactions: List[db_schema.Interaction]):
     for interaction in interactions:
         db_interaction = db.query(model.Interaction).filter_by(user_id=interaction.user_id, book_id=interaction.book_id).first()
